@@ -1,10 +1,3 @@
-<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <title></title>
-</head>
-<body>
  <?php 
 	//include './model.php';
 	class Controller{
@@ -15,8 +8,16 @@
 		public function clicked(){
 			$this -> model -> $string = "Данные обновлены";
 		}
+		public function parse_user_input(){
+			$output = null;
+			if (isset($_POST["button"])){
+				if (isset($_POST["radioButton"])){
+					$radioValId = $_POST["radioButton"];
+					$output = $this -> model -> get_description($radioValId);
+				}
+			}
+			return $output;
+		}
 	}
  ?>
-</body>
-</html>
 

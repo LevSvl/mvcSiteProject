@@ -13,21 +13,30 @@
 	$model = new Model();
 	$controller = new Controller($model);
 	$view = new View($model, $controller);
-	//if (isset($_GET['action'])&& (!empty($_GET['action']))){
-	//	$controller -> {$_GET['action']}();
 	?>
-	
+
+	<!-- Форма выбора товара -->
 	<form name="mainListForm" method="post">
-		<?php 
-			$view -> printList();
-		?>
+		<table>
+			<th>Товар</th><th>Выбор</th>
+			<?php 
+				$view -> printList();
+			?>
+		</table>
+
+		<button type='submit' name = 'button' value='$value' id='$i' >Выбрать</button>
 	</form>
-	<?php 
-		if (isset($_POST["button"])){
-			echo $_POST["button"];
-		}
-	?>
-	
+
+	<!-- Форма вывода описания -->
+	<form>
+		<p>Описание<Br>
+		<textarea name="comment" cols="40" rows="3">
+			<?php
+				$result = $controller -> parse_user_input();
+				$view -> print($result);
+			?>
+		</textarea></p>
+	</form>
 
 </body>
 </html>

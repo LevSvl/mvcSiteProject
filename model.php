@@ -1,15 +1,8 @@
-<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <title></title>
-</head>
-<body>
  <?php 
 	class Model{
 		public $string;
 		public $mainList = array (1=>"Kingston", 2=>"SeaGate", 3=>'WD');
-		private $descriptionDict = array (1=>'480 гб', 2=>'250 гб', 3=>'512 гб');
+		public $descriptionList = array (1=>'480 гб', 2=>'250 гб', 3=>'512 гб');
 		
 		public function __construct(){
 			$this->string = "SSD-диск марки ";
@@ -20,11 +13,17 @@
 		}
 		// вывести описание конкретного товара
 		public function get_description($id){
-			echo '1';
+			$targetDesc = null; 
+			$descriptionList = $this-> descriptionList;
+
+			foreach (array_values($descriptionList) as $itemId => $itemDesc){
+				if ($id == $itemId){
+					$targetDesc = $itemDesc;
+					break;
+				}
+			}
+			return $targetDesc; 
 		}
 	}
 	
  ?>
-</body>
-</html>
-

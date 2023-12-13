@@ -1,10 +1,3 @@
-<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <title></title>
-</head>
-<body>
  <?php 
 	//include './model.php';
 	// './controller.php';
@@ -15,18 +8,20 @@
 			$this -> controller = $controller;
 			$this -> model = $model;
 		}
-		public function output(){
-			echo  "<button type='submit' name='reset'>Clear</button>";
+		public function print($output){
+			echo  "$output";
 		}
 		public function printList(){
 			$mainList = $this-> model -> getList();
-			foreach (array_values($mainList) as $i => $value){
-				echo "<button type='submit' name = 'button' value='$value' id='$i' >$value</button>";
+			foreach (array_values($mainList) as $itemId => $value){
+
+				echo"<tr>
+						<td>$value</td>
+						<td><input type='radio' id='$itemId' name='radioButton' value='$itemId'/></td> 
+					</tr>";
 				
 			}
 		}
 	}
  ?>
-</body>
-</html>
 
