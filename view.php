@@ -13,6 +13,7 @@
 		}
 		public function printList(){
 			$mainList = $this-> model -> getList();
+
 			foreach (array_values($mainList) as $itemId => $value){
 
 				echo"<tr>
